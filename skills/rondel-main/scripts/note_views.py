@@ -124,7 +124,7 @@ def export_note(
     records.read_note(root / "init.md")
     destination = destination.resolve()
     if destination.is_relative_to(root):
-        raise ValueError("Choose a visible notes directory outside .rondal.")
+        raise ValueError("Choose a visible notes directory outside .rondel.")
     if destination == root.parent:
         raise ValueError("Choose a notes directory, not the workspace root.")
     if format == "obsidian" and destination.name.startswith("."):

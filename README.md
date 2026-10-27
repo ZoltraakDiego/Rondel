@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/diego20050818/Rondel/releases"><img src="https://img.shields.io/badge/version-0.1.0-214E46?style=flat-square&amp;labelColor=243C35" alt="Version 0.1.0"></a>
+  <a href="https://github.com/diego20050818/Rondel/releases"><img src="https://img.shields.io/badge/version-0.1.1-214E46?style=flat-square&amp;labelColor=243C35" alt="Version 0.1.1"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-C38B42?style=flat-square&amp;labelColor=243C35" alt="MIT license"></a>
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.11%2B-748878?style=flat-square&amp;labelColor=243C35" alt="Python 3.11 or newer for local helpers"></a>
 </p>
@@ -29,7 +29,7 @@ Rondel 是一个面向研究者的科研协作 Skill，陪你从模糊的想法�
 
 ## 从一个问题开始
 
-从 [Releases](https://github.com/diego20050818/Rondel/releases/latest) 下载 `rondel-main-0.1.0.zip`，解压后保留完整的 `rondel-main` 文件夹。按使用的 Agent，将它放入下表中的项目技能目录，再确认客户端已经发现技能。辅助脚本需要 Python 3.11+ 与 PyYAML，具体接入方式见对应说明。
+从 [Releases](https://github.com/diego20050818/Rondel/releases/latest) 下载 `rondel-main-0.1.1.zip`，解压后保留完整的 `rondel-main` 文件夹。按使用的 Agent，将它放入下表中的项目技能目录，再确认客户端已经发现技能。辅助脚本需要有效的 Python 3.11+ 解释器，安装包已内置 PyYAML，具体接入方式见对应说明。
 
 | 使用环境 | 项目内安装位置 | 启动方式与说明 |
 | :--- | :--- | :--- |
@@ -72,9 +72,9 @@ flowchart LR
 
 ## 笔记能接续，机器也能各就各位
 
-研究档案统一存放在指定工作区的 `.rondal/`，代码、数据、权重和实验产物保留原有位置。资源记录关联不同机器上的代码、环境、任务和产物入口，实际连接、调度与运行使用当时可用的宿主工具。使用 Obsidian 或其他 Markdown 软件时，可以向选定的可见目录导出阅读与批注视图，保留你的修改并回收讨论。
+研究档案统一存放在指定工作区的 `.rondel/`，代码、数据、权重和实验产物保留原有位置。资源记录关联不同机器上的代码、环境、任务和产物入口，实际连接、调度与运行使用当时可用的宿主工具。使用 Obsidian 或其他 Markdown 软件时，可以向选定的可见目录导出阅读与批注视图，保留你的修改并回收讨论。
 
-每轮先按意图取得小型上下文包，再沿引用和版本找到原始证据。阶段结束时沉淀下一阶段所需的认识与未解项，旧方向和临时细节退出默认加载，并保留检索入口。详见[路由触发与当前表](docs/routing-map.md)、[阶段上下文](skills/rondel-main/references/phase-context.md)和[笔记适配](skills/rondel-main/references/note-adapters.md)。
+项目进入时先用脚本检查 `.rondel/`，首次明确启动先保存最小 Init，已有档案再从短提示调用轻量意图识别；随后生成相关上下文包，沿引用与版本找到原始证据。阶段结束时沉淀下一阶段所需的认识与未解项，旧方向和临时细节退出默认加载，并保留检索入口。详见[路由触发与当前表](docs/routing-map.md)、[阶段上下文](skills/rondel-main/references/phase-context.md)和[笔记适配](skills/rondel-main/references/note-adapters.md)。
 
 ## 研究结束时，带走两份可以继续使用的材料
 
@@ -93,4 +93,4 @@ flowchart LR
 | 架构、路由和扩展 | [架构图](docs/architecture.md) · [开发说明](docs/development.md) · [扩展约定](docs/extension-guide.md) |
 | 标志与视觉来源 | [回环中的火种](docs/brand.md) |
 
-当前版本为 **0.1.0**，提供研究协作流程、模板与七个本地辅助脚本，完整回归已有 **173 项通过**。这些检查覆盖记录、版本、状态、上下文与交付文件等工程能力，科学判断和对话体验继续通过实际研究材料审阅。项目采用 [MIT License](LICENSE)，欢迎带着具体使用场景、发现的问题或改进建议提交 Issue 与 Pull Request。
+当前版本为 **0.1.1**，提供研究协作流程、模板与七个本地辅助脚本，完整回归已有 **183 项通过**。这些检查覆盖记录、版本、状态、上下文与交付文件等工程能力，科学判断和对话体验继续通过实际研究材料审阅。项目采用 [MIT License](LICENSE)，欢迎带着具体使用场景、发现的问题或改进建议提交 Issue 与 Pull Request。

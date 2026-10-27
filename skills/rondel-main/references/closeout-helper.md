@@ -1,6 +1,6 @@
 # 两份研究包的文件导出
 
-`scripts/closeout.py` 对明确文件清单做只读计划、新建导出和文件完整性核对。输出固定在用户工作区 `.rondal/deliverables/<release-id>/`，已有版本不覆盖。脚本不执行包中的命令，不下载引用，不更改项目阶段或原文件，实际复现程度写在相应 README 和验证记录中。
+`scripts/closeout.py` 对明确文件清单做只读计划、新建导出和文件完整性核对。输出固定在用户工作区 `.rondel/deliverables/<release-id>/`，已有版本不覆盖。脚本不执行包中的命令，不下载引用，不更改项目阶段或原文件，实际复现程度写在相应 README 和验证记录中。
 
 ```text
 python <skill>/scripts/closeout.py --root <workspace> plan --request <selected-files.json>
@@ -8,7 +8,7 @@ python <skill>/scripts/closeout.py --root <workspace> build --request <selected-
 python <skill>/scripts/closeout.py --root <workspace> verify --release <release-id>
 ```
 
-请求为 JSON，release_id 使用小写字母、数字、连字符或下划线。items 中每项指定 package（reproduction 或 materials）、source（显式本地文件，或相对 `.rondal` 的路径）和 target（包内相对路径，使用正斜杠）。两个包分别需要一份实际 README.md，目录、通配符和符号链接不作为复制项，所有文件逐项选定。
+请求为 JSON，release_id 使用小写字母、数字、连字符或下划线。items 中每项指定 package（reproduction 或 materials）、source（显式本地文件，或相对 `.rondel` 的路径）和 target（包内相对路径，使用正斜杠）。两个包分别需要一份实际 README.md，目录、通配符和符号链接不作为复制项，所有文件逐项选定。
 
 ```json
 {

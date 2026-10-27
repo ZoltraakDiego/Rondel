@@ -38,11 +38,11 @@
 
 助手随后邀请用户调整最重要的理解或节奏。用户说：“这个理解对，计划就先这样，先看我的笔记；档案放在我指定的工作区。”这句选择涵盖本轮计划与第一步，助手沿用实际来源保存。
 
-用户允许写入后，在指定工作区的 `.rondal/` 内建立最小档案。有效画像和来源保存到 `collaboration.profile`，理解段落与计划摘要写入 Init 正文，完整计划按需使用带 `purpose: research_plan` 的讨论记录。`next_step` 关联计划并指向“共同梳理已有错误案例”，`ready_for` 为 exploration；数据集、超参数和正式评价协议留待相应任务需要时讨论。
+用户允许写入后，在指定工作区的 `.rondel/` 内建立最小档案。有效画像和来源保存到 `collaboration.profile`，理解段落与计划摘要写入 Init 正文，完整计划按需使用带 `purpose: research_plan` 的讨论记录。`next_step` 关联计划并指向“共同梳理已有错误案例”，`ready_for` 为 exploration；数据集、超参数和正式评价协议留待相应任务需要时讨论。
 
 ## Main 怎样接着走
 
-用户随后说“继续”，Main 先读 `.rondal/init.md`、索引与当前计划，定位第一阶段和指定笔记。它直接梳理观察与条件，在约定复盘点说明产出及下一步建议。用户修正优先现象时，保存修正来源并更新当前计划位置；再次恢复时从这个位置继续，完整链路见 [main-cycle](../../skills/rondel-main/references/main-cycle.md)。
+用户随后说“继续”，Main 先读 `.rondel/init.md`、索引与当前计划，定位第一阶段和指定笔记。它直接梳理观察与条件，在约定复盘点说明产出及下一步建议。用户修正优先现象时，保存修正来源并更新当前计划位置；再次恢复时从这个位置继续，完整链路见 [main-cycle](../../skills/rondel-main/references/main-cycle.md)。
 
 ## 信息不全时怎样继续
 

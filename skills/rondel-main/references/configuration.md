@@ -6,7 +6,7 @@
 
 Init 保存当前共识和位置入口，详细资源与规范保存为关联材料。位置绑定可以包括 notes、papers、code、data、environment、artifacts、protocol、recipe、baseline、visualization 和 submission；每项注明位置、用途、来源与核验状态。机器使用 SSH 别名、目录和环境入口定位，认证材料留在既有认证机制中。
 
-用户指定工作区后，Rondel 档案与更新定位到其中 `.rondal/`，`bindings.notes` 指向实际档案位置。代码、数据和稿件保留原处，已有材料通过绑定关联。整体理解和计划摘要可通过 `configure` 的 `body` 更新，保留正文中的其他有效内容与旧版本。
+用户指定工作区后，Rondel 档案与更新定位到其中 `.rondel/`，`bindings.notes` 指向实际档案位置。代码、数据和稿件保留原处，已有材料通过绑定关联。整体理解和计划摘要可通过 `configure` 的 `body` 更新，保留正文中的其他有效内容与旧版本。
 
 协作方式包括引导深度与执行粒度。引导可选 guided 或 concise；执行可选 discussion、step、approved_cycle 或 approved_batch，后两者分别对应一个具体方案或有限清单。模式表达用户偏好，实际动作依据当前已确定范围。既有项目配置和用户明确修正优先。
 

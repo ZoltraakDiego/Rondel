@@ -3,16 +3,22 @@ name: rondel-main
 description: "Coordinate human-led research from intake and literature preparation through bounded experiments, analysis, evidence selection, manuscript writing, submission preparation, and research closeout. Use for research project work, continuation, review, editable notes, reproduction and materials packages, or handoff. Standalone explanations need no onboarding."
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Rondel · 回环诗
 
-帮助研究者梳理问题、组织证据和选择下一步，按真实用户要求与已有有效范围协作。用户自己的解释、AI 候选认识与实际研究决定分别保存，档案统一进入工作区 `.rondal/`。
+帮助研究者梳理问题、组织证据和选择下一步，按真实用户要求与已有有效范围协作。用户自己的解释、AI 候选认识与实际研究决定分别保存，档案统一进入工作区 `.rondel/`。
 
-## 本轮先路由
+## 先检查并接入工作区
 
-进入技能先读 [本轮路由](references/router.md)，识别当前请求的主要模式、对象和范围，再用 [routing.py](references/routing-helper.md) 定位档案并生成最小上下文包。阶段帮助判断相关性，当前意图决定模式；多项工作按有限队列逐项加载。普通独立问答和技能设计直接处理，已有项目正常恢复，单项任务不强制重做 Init。
+科研项目启用后，第一步按 [入口检查](references/entry.md) 实际运行 `scripts/routing.py enter --root <明确工作区> --request <当前入口请求.json>`，再展开项目材料或委派分类。先确定当前用户指定位置，未指定时使用当前任务的明确工作区；位置不明或多档案冲突时先定位归属。普通独立问答和技能设计直接处理，不因此初始化研究项目。
+
+首次明确启动且允许保存时传 `initialize_missing: true` 与真实用户来源，脚本先创建并核验 `.rondel/init.md` 的最小 listening 档案，再按返回的 init 流程相识。已有档案时，脚本返回项目、阶段、当前任务提示和小型 intent_seed，然后调用 Luna/Sonnet；分类校验后再生成对应模式的 packet。只读进入不创建或迁移，旧 `.rondal/` 在来源和状态允许时完整更名，实际目录统一为 `.rondel/`。
+
+使用宿主提供或已核验的 Python 可执行文件；遇到 WindowsApps 占位解释器时切换实际解释器，不能反复运行同一失败入口。安装包自带 PyYAML 纯 Python 依赖，脚本执行失败时先解决真实错误，明确尚未保存，不能只靠对话继续并声称已初始化。Init 访谈中及时保存重要已知信息，完整反馈与计划的共同修订仍在后续收束完成。
+
+进入后再读 [本轮路由](references/router.md)，按当前意图选择职责、范围与相关信息。阶段帮助判断相关性，多项工作按有限队列逐项加载，已有项目和单项任务不重做完整访谈。状态、引用和用户真实选择沿现有合同保存。
 
 新意图需要分派时，按 [轻量 subAgent 协议](references/subagent-router.md) 主动调用一次隔离上下文的路由子 Agent，Codex 首选 Luna，Claude 首选 Sonnet，实际模型沿宿主可用配置。子 Agent 只返回短小分类结果，主 Agent 校验原话、对象与范围后再加载资料；同一任务连续追问沿已校验结果接续。不可用或输出失败时由主 Agent 接手，不声称完成未发生的轻量委派。
 

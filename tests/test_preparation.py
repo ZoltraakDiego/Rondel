@@ -162,7 +162,7 @@ def test_board_initialization_is_idempotent_and_context_recovers_it(
     status = prep.status(project)
     assert not status["checklist_complete"]
     assert len(status["tasks"]) == 10
-    assert {p.name for p in project.parent.iterdir()} == {".rondal"}
+    assert {p.name for p in project.parent.iterdir()} == {".rondel"}
     for mode in ("open", "status", "pre.baseline", "pre.protocol"):
         assert (
             board.relative_to(project).as_posix()

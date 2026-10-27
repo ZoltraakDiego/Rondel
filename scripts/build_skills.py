@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import re
+import tomllib
 import zipfile
 from pathlib import Path
 
@@ -13,6 +14,9 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / "skills/rondel-main"
+VERSION = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))[
+    "project"
+]["version"]
 
 
 def shared_files() -> dict[Path, Path]:
@@ -171,7 +175,7 @@ def package(destination: Path | None = None) -> Path:
         raise ValueError("; ".join(issues))
     destination = destination or ROOT / "dist"
     destination.mkdir(parents=True, exist_ok=True)
-    archive = destination / "rondel-main-0.1.0.zip"
+    archive = destination / f"rondel-main-{VERSION}.zip"
     manifest = []
     with zipfile.ZipFile(
         archive, "w", compression=zipfile.ZIP_DEFLATED
@@ -189,7 +193,7 @@ def package(destination: Path | None = None) -> Path:
                     "sha256": hashlib.sha256(payload).hexdigest(),
                 }
             )
-    (destination / "rondel-main-0.1.0.manifest.json").write_text(
+    (destination / f"rondel-main-{VERSION}.manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )

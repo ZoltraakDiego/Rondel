@@ -1,6 +1,6 @@
 [project]
 name = "rondel-research"
-version = "0.1.0"
+version = "0.1.1"
 description = "Human-led research guidance, records, and mainline coordination"
 requires-python = ">=3.11"
 dependencies = ["PyYAML>=6.0.3,<7"]
@@ -15,6 +15,7 @@ addopts = "-ra"
 [tool.ruff]
 line-length = 80
 target-version = "py311"
+extend-exclude = ["skills/rondel-main/scripts/yaml"]
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "I", "UP"]

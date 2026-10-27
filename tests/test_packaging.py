@@ -48,9 +48,9 @@ def test_install_archive_excludes_private_material_and_is_verifiable(
         assert "rondel-main/assets/templates/init.md" in names
         assert not any(".private" in n or "__pycache__" in n for n in names)
         manifest = json.loads(
-            (tmp_path / "rondel-main-0.1.0.manifest.json").read_text(
-                encoding="utf-8"
-            )
+            (
+                tmp_path / f"rondel-main-{build_api.VERSION}.manifest.json"
+            ).read_text(encoding="utf-8")
         )
         assert {r["path"] for r in manifest} == set(names)
         assert all(
@@ -83,9 +83,9 @@ def test_installed_helper_can_initialize_without_repository_resources(
             "quote": "在这里创建示例笔记。",
         },
     )
-    archive_root = notes / ".rondal"
+    archive_root = notes / ".rondel"
     assert api.read_note(archive_root / "init.md")[0]["status"] == "listening"
-    assert {p.name for p in notes.iterdir()} == {".rondal"}
+    assert {p.name for p in notes.iterdir()} == {".rondel"}
     assert api.validate(notes) == []
     resource_api = load_module(
         "installed_resources", installed / "rondel-main/scripts/resources.py"

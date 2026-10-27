@@ -51,6 +51,6 @@
 
 ## 文件与持续把关
 
-总表是正常的 discussion 记录；可读 Todo 和 Changelog 由明确的 report 操作重建，分别位于 `.rondal/setup/preparation-todo.md` 与 `.rondal/history/preparation-changelog.md`。它们是展示投影，来源仍是总表、设置记录和历史事件，生成区外的研究者讨论保留在总表。无需在工作区根目录建立新的分类目录。
+总表是正常的 discussion 记录；可读 Todo 和 Changelog 由明确的 report 操作重建，分别位于 `.rondel/setup/preparation-todo.md` 与 `.rondel/history/preparation-changelog.md`。它们是展示投影，来源仍是总表、设置记录和历史事件，生成区外的研究者讨论保留在总表。无需在工作区根目录建立新的分类目录。
 
 Main 每轮围绕本轮相关项检查：当前问题、正在使用的设置版本、与原计划的偏差、新证据和用户未完成的判断。发现定义变化先定位受影响比较，机械故障修复沿已有范围继续；改变数据、监督、模型或评价条件则进入版本与影响审阅。预备清单负责守住研究起点，探索仍可以带着明确的未知项前进。

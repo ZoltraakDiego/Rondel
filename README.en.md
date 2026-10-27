@@ -20,7 +20,7 @@ The name evokes a returning poetic form: revisit the first question with new evi
 
 ## Get started
 
-Download `rondel-main-0.1.0.zip` from [Releases](https://github.com/diego20050818/Rondel/releases/latest), extract it and keep the complete `rondel-main` directory. Install it into the project skill location below and confirm that your client discovers it. Local helpers require Python 3.11+ and PyYAML.
+Download `rondel-main-0.1.1.zip` from [Releases](https://github.com/diego20050818/Rondel/releases/latest), extract it and keep the complete `rondel-main` directory. Install it into the project skill location below and confirm that your client discovers it. Local helpers require a working Python 3.11+ interpreter; the package includes PyYAML.
 
 | Client | Project skill location | Invocation and guide |
 | :--- | :--- | :--- |
@@ -51,9 +51,9 @@ During experimentation, preserve key data, conditions and candidate claims first
 
 ## Continuity across notes, machines and sessions
 
-Research records live inside `.rondal/` in the selected workspace; existing code, data, weights and artifacts remain in place. Resource records connect host identities, paths, environments, runs and outputs, while actual execution uses the client's available tools within the selected scope. Markdown and Obsidian views support reading and feedback without silently overwriting researcher edits.
+Research records live inside `.rondel/` in the selected workspace; existing code, data, weights and artifacts remain in place. Resource records connect host identities, paths, environments, runs and outputs, while actual execution uses the client's available tools within the selected scope. Markdown and Obsidian views support reading and feedback without silently overwriting researcher edits.
 
-Intent routing loads a bounded context packet with source navigation. Reviewed phase summaries carry essential findings, decisions, conditions and unresolved questions forward, while older detail stays retrievable. At meaningful boundaries, Main prepares a handoff before suggesting a fresh session.
+The first entry script checks `.rondel/`, saves a minimal intake on an authorized first start, or builds a small routing seed for an existing project. Intent routing then loads a bounded context packet with source navigation. Reviewed phase summaries carry essential findings, decisions, conditions and unresolved questions forward, while older detail stays retrievable. At meaningful boundaries, Main prepares a handoff before suggesting a fresh session.
 
 ## Leave with two useful packages
 
@@ -70,4 +70,4 @@ The reproduction package describes how to establish the environment, access mate
 | Implementation | [Audit](docs/implementation-audit-20261027.md) · [Validation](docs/VALIDATION.md) |
 | Brand | [The ember in the return](docs/brand.md) |
 
-Version **0.1.0** includes workflow instructions, templates and seven local helpers, with **173 regression checks passed**. File and state checks are distinct from scientific judgment and conversational quality, which require review against actual research materials. Original project materials are released under the [MIT License](LICENSE).
+Version **0.1.1** includes workflow instructions, templates and seven local helpers, with **183 regression checks passed**. File and state checks are distinct from scientific judgment and conversational quality, which require review against actual research materials. Original project materials are released under the [MIT License](LICENSE).

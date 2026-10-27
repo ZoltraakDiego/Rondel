@@ -7,4 +7,4 @@
 - [实验分析示例（无结果）](实验分析示例（无结果）--6e56dbd5.md)
 - [论文交互示例（工作稿）](论文交互示例（工作稿）--536d0295.md)
 
-完整规则见 [笔记适配](../../skills/rondel-main/references/note-adapters.md)；模板位于 [共享模板](../../shared/templates/experiment.md)，主档案保存在各项目的 `.rondal/`。
+完整规则见 [笔记适配](../../skills/rondel-main/references/note-adapters.md)；模板位于 [共享模板](../../shared/templates/experiment.md)，主档案保存在各项目的 `.rondel/`。

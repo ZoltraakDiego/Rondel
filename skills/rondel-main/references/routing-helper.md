@@ -1,5 +1,8 @@
 # 路由辅助脚本
 
+项目接入首先调用 [entry](entry.md)：`<Python> <skill>/scripts/routing.py enter --root <workspace> --request <entry.json>`。它先检查真实目录与落盘，新建最小 Init 或返回已有项目的短 seed；后面的 discover、intent 与 packet 保留为相应低层接口。
+
+
 `scripts/routing.py` 接收 Agent 已经识别的主要模式，输出有预算的上下文数据与来源导航。它不自行调用模型或执行研究，语义识别由 [路由指引](router.md) 完成。原 context 命令继续兼容定位文件，新路由默认使用 packet，避免先展开完整 Init 正文和活动索引。
 
 轻量委派前使用 intent 生成受限 seed，主 Agent 调用实际宿主的 subAgent 后用 validate-intent 校验返回。两条命令不自行调用模型，不读取研究正文，也不写项目状态；实际调用方式见 [subAgent 协议](subagent-router.md)。会话切换由 Main 按 [session 规则](session-boundaries.md) 单独判断。

@@ -28,12 +28,12 @@ def test_workspace_records_stay_inside_hidden_archive(api, tmp_path, source):
     user_file = workspace / "research.py"
     user_file.write_text("user content", encoding="utf-8")
     path = api.initialize(workspace, "研究", "先澄清问题", source)
-    assert path == workspace / ".rondal/init.md"
+    assert path == workspace / ".rondel/init.md"
     record = api.create_record(workspace, "discussion", "当前计划", "计划建议")
-    assert record.is_relative_to(workspace / ".rondal")
-    assert {p.name for p in workspace.iterdir()} == {"research.py", ".rondal"}
+    assert record.is_relative_to(workspace / ".rondel")
+    assert {p.name for p in workspace.iterdir()} == {"research.py", ".rondel"}
     assert user_file.read_text(encoding="utf-8") == "user content"
-    assert api.archive_root(workspace / ".rondal") == workspace / ".rondal"
+    assert api.archive_root(workspace / ".rondel") == workspace / ".rondel"
     assert api.validate(workspace) == []
 
 
@@ -45,16 +45,16 @@ def test_legacy_archive_needs_migration_before_new_writes(
     legacy.mkdir()
     (legacy / "init.md").write_bytes((project / "init.md").read_bytes())
     if preexisting_archive:
-        (legacy / ".rondal").mkdir()
+        (legacy / ".rondel").mkdir()
     before = (legacy / "init.md").read_bytes()
     with pytest.raises(api.RecordError, match="migrate"):
         api.initialize(legacy, "new", "new", source)
     assert (legacy / "init.md").read_bytes() == before
-    assert not (legacy / ".rondal/init.md").exists()
+    assert not (legacy / ".rondel/init.md").exists()
     if preexisting_archive:
-        assert not any((legacy / ".rondal").iterdir())
+        assert not any((legacy / ".rondel").iterdir())
     else:
-        assert not (legacy / ".rondal").exists()
+        assert not (legacy / ".rondel").exists()
 
 
 def test_configure_saves_synthesis_with_previous_body_in_history(

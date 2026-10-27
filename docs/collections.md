@@ -1,6 +1,6 @@
 # 统一入口与 28 个研究工作流
 
-当前 28 项职责随 rondel-main 按需发布：Main 七项、Pre 六项、Mid 八项、Post 七项。它们由 Agent 使用实际工具完成，单项职责可以跨阶段接入。路由按当前意图选择，当前任务、来源、状态和实际用户范围在同一 .rondal 档案中接续。
+当前 28 项职责随 rondel-main 按需发布：Main 七项、Pre 六项、Mid 八项、Post 七项。它们由 Agent 使用实际工具完成，单项职责可以跨阶段接入。路由按当前意图选择，当前任务、来源、状态和实际用户范围在同一 .rondel 档案中接续。
 
 Main 的映射与回传见 [工具图](../skills/rondel-main/references/main-tool-map.md)，具体链路见 [Mid](../skills/rondel-main/references/mid-cycle.md) 和 [Post](../skills/rondel-main/references/post-cycle.md)。论文组织先记录数据与 claim，最后统一取舍，研究收尾交付复现包和资料包。七个本地辅助脚本支持记录与核对，实际科研操作使用当前宿主工具和明确范围。
 

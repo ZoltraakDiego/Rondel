@@ -22,6 +22,7 @@ from uuid import uuid4
 import yaml
 
 SCHEMA_VERSION = 1
+ARCHIVE_NAMES = (".rondel", ".rondal")
 PHASES = {
     "init": {
         "prepare",
@@ -238,13 +239,22 @@ def digest(path: Path) -> str:
 
 
 def archive_root(root: Path) -> Path:
-    """将用户工作区映射到 .rondal，直接传入档案目录时保持幂等。"""
+    """定位规范档案或只读兼容旧拼写；迁移由入口显式完成。"""
     root = root.resolve()
-    if root.name.casefold() == ".rondal":
-        return root
-    archive = root / ".rondal"
+    if root.name.casefold() in ARCHIVE_NAMES:
+        root = root.parent
+    archive = root / ".rondel"
     if archive.resolve().parent != root:
         raise RecordError("Archive path leaves the selected workspace.")
+    previous = root / ".rondal"
+    if previous.resolve().parent != root:
+        raise RecordError("Legacy archive path leaves the selected workspace.")
+    if (archive / "init.md").exists() and (previous / "init.md").exists():
+        raise RecordError(
+            "Both .rondel and .rondal exist; select the actual archive before continuing."
+        )
+    if not archive.exists() and previous.exists():
+        return previous
     legacy = root / "init.md"
     if not (archive / "init.md").exists() and legacy.is_file():
         try:
@@ -253,7 +263,7 @@ def archive_root(root: Path) -> Path:
             meta = {}
         if meta.get("type") == "project" and meta.get("schema_version") == 1:
             raise RecordError(
-                "Legacy archive found: migrate its records into .rondal first."
+                "Legacy archive found: migrate its records into .rondel first."
             )
     return archive
 
@@ -288,7 +298,7 @@ def render(meta: dict, body: str) -> str:
 def atomic_write(path: Path, text: str | bytes) -> None:
     """在目标目录内原子替换一个文件。"""
     path.parent.mkdir(parents=True, exist_ok=True)
-    fd, temporary = tempfile.mkstemp(prefix=".rondal-", dir=path.parent)
+    fd, temporary = tempfile.mkstemp(prefix=".rondel-", dir=path.parent)
     try:
         with os.fdopen(fd, "wb") as stream:
             stream.write(
@@ -663,7 +673,7 @@ def _commit(
 def initialize(
     root: Path, name: str, user_statement: str, source: dict
 ) -> Path:
-    """在工作区的 .rondal 中创建最小档案，不代填科学方向或环境。"""
+    """在工作区的 .rondel 中创建最小档案，不代填科学方向或环境。"""
     human_source(source)
     root = archive_root(root)
     root.mkdir(parents=True, exist_ok=True)
@@ -1367,7 +1377,7 @@ def main() -> int:
         "--root",
         required=True,
         type=Path,
-        help="Workspace or its .rondal archive",
+        help="Workspace or its .rondel archive",
     )
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("init")

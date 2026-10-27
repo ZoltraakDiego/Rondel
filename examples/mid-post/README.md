@@ -51,4 +51,4 @@ post.submission 核对用户当前选择的目标、年份和文章类型，从�
 | 组织与修订论文 | post.write | manuscript、相关主张与版本 |
 | 核对目标与投稿准备 | post.submission | submission_requirements、submission_package 与真实动作 |
 
-记录统一保存于用户工作区 `.rondal/`，远程数据、权重和日志保持其实际位置，笔记视图按原适配规则导出。显式指定新方案时，本轮上下文优先使用它，不带入上次任务的运行；共享数据设置只作为必要来源。完整流程见 [Mid 工具链](../../skills/rondel-main/references/mid-cycle.md) 与 [Post 工具链](../../skills/rondel-main/references/post-cycle.md)。
+记录统一保存于用户工作区 `.rondel/`，远程数据、权重和日志保持其实际位置，笔记视图按原适配规则导出。显式指定新方案时，本轮上下文优先使用它，不带入上次任务的运行；共享数据设置只作为必要来源。完整流程见 [Mid 工具链](../../skills/rondel-main/references/mid-cycle.md) 与 [Post 工具链](../../skills/rondel-main/references/post-cycle.md)。

@@ -262,7 +262,7 @@ def discover(start: Path, boundary: Path | None = None) -> dict:
     start = start.resolve()
     if start.is_file():
         start = start.parent
-    if start.name.casefold() == ".rondal":
+    if start.name.casefold() in records.ARCHIVE_NAMES:
         boundary = start = start.parent
     if boundary is None:
         boundary = next(
@@ -276,8 +276,12 @@ def discover(start: Path, boundary: Path | None = None) -> dict:
     candidates = []
     cursor = start
     while True:
-        root = records.archive_root(cursor)
-        if (root / "init.md").is_file():
+        for name in records.ARCHIVE_NAMES:
+            root = cursor / name
+            if root.resolve().parent != cursor:
+                raise ValueError("Archive path leaves the discovery workspace.")
+            if not (root / "init.md").is_file():
+                continue
             meta, _ = records.read_note(root / "init.md")
             records.check_meta(meta)
             candidates.append(
@@ -299,6 +303,123 @@ def discover(start: Path, boundary: Path | None = None) -> dict:
         if candidates
         else "not_found",
     }
+
+
+def enter(
+    workspace: Path,
+    request: str,
+    source: dict | None = None,
+    initialize_missing: bool = False,
+    read_only: bool = False,
+    runtime: str = "codex",
+) -> dict:
+    """先发现并核对落盘，再进入相识或生成隔离的轻量分类输入。"""
+    if type(initialize_missing) is not bool or type(read_only) is not bool:
+        raise ValueError("Entry flags must be booleans.")
+    if initialize_missing and read_only:
+        raise ValueError("Read-only entry cannot initialize an archive.")
+    # Validate the short request and runtime before any write.
+    seed = intent_seed(request, runtime, read_only_constraint=read_only)
+    workspace = workspace.resolve()
+    if workspace.name.casefold() in records.ARCHIVE_NAMES:
+        workspace = workspace.parent
+    if not workspace.is_dir():
+        raise ValueError("Select an existing project workspace.")
+    found = discover(workspace, workspace)
+    result = {
+        "workspace": str(workspace),
+        "discovery": found,
+        "archive": str(workspace / ".rondel"),
+        "repairs": [],
+        "initialized": False,
+        "next_action": "init",
+        "instruction": "references/init-dialogue.md",
+    }
+    if found["resolution"] == "ambiguous":
+        result.update(next_action="resolve_archive_conflict", instruction=None)
+        return result
+    legacy = workspace / ".rondal"
+    canonical = workspace / ".rondel"
+    if legacy.exists():
+        if canonical.exists() or not (legacy / "init.md").is_file():
+            result.update(
+                next_action="resolve_archive_conflict", instruction=None
+            )
+            return result
+        if read_only or source is None:
+            result.update(
+                next_action="repair_legacy_archive",
+                archive=str(legacy),
+                instruction=None,
+            )
+            return result
+        records.human_source(source)
+        if (legacy / ".state/write.lock").exists() or (
+            legacy / ".state/pending.json"
+        ).exists():
+            raise ValueError(
+                "Finish archive recovery or an active write before renaming."
+            )
+        # Both resolved paths must stay in this explicitly selected workspace.
+        if (
+            legacy.resolve().parent != workspace
+            or canonical.resolve().parent != workspace
+        ):
+            raise ValueError("Archive migration leaves the selected workspace.")
+        legacy.rename(canonical)
+        result["repairs"].append(
+            "renamed .rondal to .rondel without changing record contents"
+        )
+        found = discover(workspace, workspace)
+        result["discovery"] = found
+    if found["resolution"] == "not_found":
+        if not initialize_missing:
+            result["read_only"] = read_only
+            return result
+        records.human_source(source)
+        records.initialize(workspace, workspace.name, request, source)
+        result["initialized"] = True
+        result["discovery"] = discover(workspace, workspace)
+        meta, _ = records.read_note(canonical / "init.md")
+        records.check_meta(meta)
+        if records.validate(workspace):
+            raise ValueError(
+                "Archive was created but needs record validation before continuing."
+            )
+        result["project"] = {
+            "id": meta["project_id"],
+            "phase": meta["phase"],
+            "init_status": meta["status"],
+        }
+        result["persistence_verified"] = True
+        return result
+    meta, _ = records.read_note(canonical / "init.md")
+    records.check_meta(meta)
+    step = meta.get("next_step", {})
+    targets = []
+    for key in TASK_REF_KEYS:
+        ref = step.get(key)
+        if isinstance(ref, str) and ref.startswith("record:"):
+            targets.append(ref)
+    hints = {"project_id": meta["project_id"], "phase": meta["phase"]}
+    label = step.get("label")
+    if isinstance(label, str) and label:
+        hints["task_label"] = label[:200]
+    seed = intent_seed(
+        request, runtime, hints, list(dict.fromkeys(targets))[:8], read_only
+    )
+    result.update(
+        next_action="route",
+        instruction="references/subagent-router.md",
+        project={
+            "id": meta["project_id"],
+            "phase": meta["phase"],
+            "init_status": meta["status"],
+        },
+        intent_seed=seed,
+        persistence_verified=True,
+    )
+    return result
 
 
 def _index(root: Path) -> list[dict]:
@@ -984,6 +1105,9 @@ def main() -> int:
     find = sub.add_parser("discover")
     find.add_argument("--start", required=True, type=Path)
     find.add_argument("--boundary", type=Path)
+    entry = sub.add_parser("enter")
+    entry.add_argument("--root", required=True, type=Path)
+    entry.add_argument("--request", required=True, type=Path)
     intent = sub.add_parser("intent")
     intent.add_argument("--request", required=True, type=Path)
     validate_intent = sub.add_parser("validate-intent")
@@ -1008,6 +1132,11 @@ def main() -> int:
     try:
         if args.command == "discover":
             result = discover(args.start, args.boundary)
+        elif args.command == "enter":
+            request = yaml.safe_load(
+                args.request.read_text(encoding="utf-8-sig")
+            )
+            result = enter(args.root, **request)
         elif args.command == "intent":
             request = yaml.safe_load(
                 args.request.read_text(encoding="utf-8-sig")

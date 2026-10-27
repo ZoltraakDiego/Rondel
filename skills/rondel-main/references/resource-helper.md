@@ -31,4 +31,4 @@ observation:
 python <skill>/scripts/resources.py --root <workspace> --gpu-count 1 --gpu-memory-gb 20 --out .state/resources/inventory.json
 ```
 
-不指定 `--out` 时只读并输出简洁计数，指定后结构化汇总只写到项目 `.rondal/.state/resources/` 内。未知、陈旧、未来时间、未核验或缺少来源的观测不会成为可用候选，连接异常也不会触发回退本机。完整职责见 [资源聚合层](resource-aggregation.md)。
+不指定 `--out` 时只读并输出简洁计数，指定后结构化汇总只写到项目 `.rondel/.state/resources/` 内。未知、陈旧、未来时间、未核验或缺少来源的观测不会成为可用候选，连接异常也不会触发回退本机。完整职责见 [资源聚合层](resource-aggregation.md)。

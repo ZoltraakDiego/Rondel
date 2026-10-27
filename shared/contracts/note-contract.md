@@ -1,8 +1,8 @@
 # 记录合同 v1
 
-论文材料取舍使用 discussion、purpose: paper_material_selection，保存当前范围、实际审阅覆盖、关键数据与候选 claim、主文/补充/档案/待核验去向及理由。收尾使用 reproduction_package、materials_package、project_closeout 的 discussion，关联实际交付版本、清单、验证范围与用户选择。导出目录为 `.rondal/deliverables/<release-id>/`，文件核验不改变科学状态或阶段，任何阶段均可沿真实用户选择归档。
+论文材料取舍使用 discussion、purpose: paper_material_selection，保存当前范围、实际审阅覆盖、关键数据与候选 claim、主文/补充/档案/待核验去向及理由。收尾使用 reproduction_package、materials_package、project_closeout 的 discussion，关联实际交付版本、清单、验证范围与用户选择。导出目录为 `.rondel/deliverables/<release-id>/`，文件核验不改变科学状态或阶段，任何阶段均可沿真实用户选择归档。
 
-项目记录统一保存在用户工作区的 `.rondal/` 中，使用 UTF-8 Markdown 和 YAML 文件头。共用字段为 schema_version、id、project_id、type、display_name、status、revision、refs 和 updated_at。标识在创建后保持稳定，display_name 使用技术或任务语义；正文保留人的文字，更新版本时保存旧文件和状态事件。
+项目记录统一保存在用户工作区的 `.rondel/` 中，使用 UTF-8 Markdown 和 YAML 文件头。共用字段为 schema_version、id、project_id、type、display_name、status、revision、refs 和 updated_at。标识在创建后保持稳定，display_name 使用技术或任务语义；正文保留人的文字，更新版本时保存旧文件和状态事件。
 
 上下文路由默认输出字段受控、有字符预算的任务包，原正文按导航展开，普通请求不加载完整索引。context_registry 为独立 discussion，entries 按记录引用保存 active、archive、temporary 和理由，只管理默认可见性，原记录与冻结定义不变。归档目标仍可显式查找，不因归档自动改变方向、假设或结果状态。
 
@@ -10,7 +10,7 @@
 
 引用使用 `record:<id>` 关联项目对象，`project:<relative-path>` 关联项目内文件，也可记录外部路径或正式来源 URL。外部来源需要相应任务核验，文件校验不会据 URL 或路径存在推断科学有效。Init 保存当前有效的 research_anchor、bindings、collaboration、next_step、ready_for、phase 和 activity。
 
-`project:` 的相对基准为 `.rondal/`，记录文件夹、Init、索引和历史均位于该目录，内部状态位于 `.state/`。工作区根目录不用于新建 Rondel 的分类文件夹，已有代码、数据、稿件与产物通过位置绑定关联。Init 正文保存一个完整的用户理解段落和当前计划摘要；完整计划可用带 `purpose: research_plan` 的讨论记录保存，`next_step.plan_ref` 与 `refs` 关联它，用户采纳另有决定来源。
+`project:` 的相对基准为 `.rondel/`，记录文件夹、Init、索引和历史均位于该目录，内部状态位于 `.state/`。工作区根目录不用于新建 Rondel 的分类文件夹，已有代码、数据、稿件与产物通过位置绑定关联。Init 正文保存一个完整的用户理解段落和当前计划摘要；完整计划可用带 `purpose: research_plan` 的讨论记录保存，`next_step.plan_ref` 与 `refs` 关联它，用户采纳另有决定来源。
 
 research_anchor 包含用户原话 user_statement、共同问题 problem、开放问题 open_question、方向状态 direction_status 和确认来源 confirmed_by。可增补 priority、current_question 与 scope，由明确用户来源修订。AI 候选解释和旁支保存在讨论、假设或方向记录中，不自动变成共同主线。
 
@@ -34,7 +34,7 @@ Pre 退出评审在 phase_review 上增加 review_type: pre_exit，保存六项�
 
 实验方案批准后保持冻结，run 记录实际执行，purpose: experiment_analysis 的 discussion 汇总有效结果与研究者解释；purpose: manuscript 的 discussion 可承载论文工作稿。中后期职责以按需流程使用这些记录，正式身份、状态与来源由现有接口维护；本地辅助检查不替代真实运行或科学判断。
 
-bindings.notes 指向 .rondal 主档案，用户另行指定的笔记视图位置可保存在 bindings.notes_view，注明 format、location 与来源。视图展示平铺属性并保留核心记录身份和版本，导出清单在 .state/note-views.json；研究者编辑被保留，回收为 purpose: note_feedback 的待审阅 discussion。批注与视图元数据不会直接改写科学状态或批准范围，软件适配不改变核心证据与来源规则。
+bindings.notes 指向 .rondel 主档案，用户另行指定的笔记视图位置可保存在 bindings.notes_view，注明 format、location 与来源。视图展示平铺属性并保留核心记录身份和版本，导出清单在 .state/note-views.json；研究者编辑被保留，回收为 purpose: note_feedback 的待审阅 discussion。批注与视图元数据不会直接改写科学状态或批准范围，软件适配不改变核心证据与来源规则。
 
 协作依据 source 包含 kind、reference 和 quote；明确的人类选择使用 user_message 或 user_note。source 用于记录真实交流，平台权限和研究执行仍以当次有效指令为准。自动消息、模型转述和历史资料保留其来源属性。
 

@@ -1,5 +1,5 @@
 flowchart TB
-    U["研究者<br/>目标 · 选择 · 理解 · 当前状态"] --> B["宿主引导句<br/>在项目边界内定位 .rondal"]
+    U["研究者<br/>目标 · 选择 · 理解 · 当前状态"] --> B["宿主引导句<br/>在项目边界内定位 .rondel"]
     B --> S["rondel-main / SKILL.md<br/>按当前意图选择模式"]
     N["共享规范与模板<br/>语言风格及技术依据 · 记录合同<br/>论文卡 · 实验 · 分析 · 稿件"] -.-> S
 
@@ -17,7 +17,10 @@ flowchart TB
         F <-->|主张与材料版本| G
         G -->|复盘与下一步| M
     end
-    S --> L["轻量路由 subAgent<br/>Codex：Luna / Claude：Sonnet<br/>隔离输入 · JSON 分类"]
+    S --> K["routing.py enter<br/>先检查 .rondel 与实际落盘"]
+    K -->|缺失且允许保存| N0["最小 listening 档案<br/>核验后进入 Init"]
+    N0 --> M
+    K -->|已有有效档案的短 seed| L["轻量路由 subAgent<br/>Codex：Luna / Claude：Sonnet<br/>隔离输入 · JSON 分类"]
     L --> J["主 Agent 校验<br/>意图 · 目标 · 范围 · session 边界"]
     J --> Q
     Q -->|最小相关上下文| M
@@ -39,7 +42,7 @@ flowchart TB
     I --> E
     F --> Z
 
-    D[("工作区 .rondal<br/>Init · 画像 · 问题 · 计划 · 决定<br/>冻结设置 · 方案 · 运行 · 分析<br/>阶段文档 · 归档导航<br/>来源 · 历史 · Todo / Changelog")]
+    D[("工作区 .rondel<br/>Init · 画像 · 问题 · 计划 · 决定<br/>冻结设置 · 方案 · 运行 · 分析<br/>阶段文档 · 归档导航<br/>来源 · 历史 · Todo / Changelog")]
     Q <-->|相关摘要与来源导航| D
     R --> D
     E -->|只读结构核对| D
