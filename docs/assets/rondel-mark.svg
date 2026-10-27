@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Rondel · 回环诗</title>
+  <desc id="desc">一条向内回旋的松绿色墨线，与开口处一粒金色火种。</desc>
+  <rect width="256" height="256" rx="60" fill="#F7F4EB"/>
+  <path d="M174 51 C141 22 89 24 55 54 C17 88 18 147 51 180 C85 216 140 221 177 193 C206 172 219 134 205 104 C195 82 174 69 152 73 C128 76 111 97 115 121 C119 145 141 158 162 148" fill="none" stroke="#214E46" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M211 42 C211 54 200 57 200 67 C200 76 207 82 215 79 C226 75 229 63 221 54 C217 49 214 47 211 42Z" fill="#C38B42"/>
+</svg>

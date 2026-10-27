@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rondel · 回环诗"
+  short_description: "通过渐进对话共同澄清研究问题，维护研究主线、证据、笔记与跨会话交接"
+  default_prompt: "使用 $rondel-main 接入我的研究项目，先理解现有问题和材料，再共同选择下一步。"

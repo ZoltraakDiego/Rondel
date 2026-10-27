@@ -1,0 +1,283 @@
+schema_version: 1
+version: 0.1.0
+tools:
+- id: main.open
+  display_name: 接入与恢复
+  collection: main
+  status: available
+  input: 项目入口、当前请求
+  output: 当前问题、实际状态与进入位置
+  entrypoint: rondel-main
+  reference: references/main-cycle.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: main.init
+  display_name: 渐进式初始化
+  collection: main
+  status: available
+  input: 用户表达与指定材料
+  output: 自我介绍、整体理解、推荐计划排期、当前一步与档案位置
+  entrypoint: rondel-main
+  reference: references/init-dialogue.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: main.status
+  display_name: 研究状态
+  collection: main
+  status: available
+  input: Init、活动记录、近期用户状态与相关交接
+  output: 当前阶段、客观增量、相关困难与下一步
+  entrypoint: rondel-main
+  reference: references/main-cycle.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: main.review
+  display_name: 主线与方向复盘
+  collection: main
+  status: available
+  input: 当前证据、用户理解、计划承诺与阶段条件
+  output: 认识、关键缺口、推进调整与转阶段建议
+  entrypoint: rondel-main
+  reference: references/drift-check.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: main.decide
+  display_name: 人的决定
+  collection: main
+  status: available
+  input: 真实用户选择及来源
+  output: 决定笔记与对象状态
+  entrypoint: rondel-main
+  reference: references/decisions.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: main.configure
+  display_name: 修改约定
+  collection: main
+  status: available
+  input: 用户修改与最新文件摘要
+  output: 新版本及影响说明
+  entrypoint: rondel-main
+  reference: references/configuration.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: main.handoff
+  display_name: 交接与暂停
+  collection: main
+  status: available
+  input: 当前问题、决定与实际进度
+  output: 交接及恢复入口
+  entrypoint: rondel-main
+  reference: references/handoff.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: pre.environment
+  display_name: 资源聚合与环境建立
+  collection: pre
+  status: available
+  input: 机器、连接、代码与环境入口
+  output: 资源汇总、目标机器、环境卡与实际核验
+  entrypoint: rondel-main
+  reference: references/pre-environment.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: pre.data
+  display_name: 找数据集与核验
+  collection: pre
+  status: available
+  input: 已读论文、正式来源与数据位置
+  output: 数据卡、样本语义、版本和划分依据
+  entrypoint: rondel-main
+  reference: references/pre-datasets.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: pre.protocol
+  display_name: 数据评价协议与配方
+  collection: pre
+  status: available
+  input: 数据卡、论文、代码与用户选择
+  output: 共享协议、基线特定配方和修订依据
+  entrypoint: rondel-main
+  reference: references/pre-protocol.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: pre.baseline
+  display_name: Baseline 选择与版本固定
+  collection: pre
+  status: available
+  input: 核心阅读、用户理解与协议
+  output: 候选对照、Baseline 冻结设置及复现准备
+  entrypoint: rondel-main
+  reference: references/pre-baselines.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: pre.library
+  display_name: 找论文、精读与实现定位
+  collection: pre
+  status: available
+  input: 当前问题、已有论文库与正式来源
+  output: 检索日志、领域地图、核心论文卡
+  entrypoint: rondel-main
+  reference: references/pre-papers.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: pre.framing
+  display_name: 问题与方向引导
+  collection: pre
+  status: available
+  input: 用户观察、兴趣与材料
+  output: 共同问题、方向比较和候选假设
+  entrypoint: rondel-main
+  reference: references/pre-framing.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.issue
+  display_name: 具体问题形成
+  collection: mid
+  status: available
+  input: 预测现象、条件和影响
+  output: 问题、证据及候选解释
+  entrypoint: rondel-main
+  reference: references/mid-issue.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.retrieve
+  display_name: 相关方法与实现
+  collection: mid
+  status: available
+  input: 当前问题及成熟来源
+  output: 机制、调用链和迁移比较
+  entrypoint: rondel-main
+  reference: references/mid-retrieve.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.design
+  display_name: 受控实验设计
+  collection: mid
+  status: available
+  input: 假设、对照与资源条件
+  output: 预期、否证条件、诊断和清单
+  entrypoint: rondel-main
+  reference: references/mid-design.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.implement
+  display_name: 范围内实现
+  collection: mid
+  status: available
+  input: 当前明确任务或方案、实际源码与来源
+  output: 最小必要改动、对应关系与检查
+  entrypoint: rondel-main
+  reference: references/mid-implement.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.preflight
+  display_name: 执行前核对
+  collection: mid
+  status: available
+  input: 实际代码、配置和环境
+  output: 执行快照、覆盖和真实问题
+  entrypoint: rondel-main
+  reference: references/mid-preflight.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.execute
+  display_name: 有限清单执行
+  collection: mid
+  status: available
+  input: 批准方案和实际可用资源
+  output: 运行记录、异常和产物引用
+  entrypoint: rondel-main
+  reference: references/mid-execute.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.inspect
+  display_name: 结果有效性
+  collection: mid
+  status: available
+  input: 原始产物和实际协议
+  output: 完整性、口径和有效范围
+  entrypoint: rondel-main
+  reference: references/mid-inspect.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: mid.analyze
+  display_name: 研究分析
+  collection: mid
+  status: available
+  input: 有效结果与诊断
+  output: 收益损伤、机制、解释和选择
+  entrypoint: rondel-main
+  reference: references/mid-analyze.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.converge
+  display_name: 架构与模块收敛
+  collection: post
+  status: available
+  input: 匹配候选和研究证据
+  output: 核心架构、作用及保留依据
+  entrypoint: rondel-main
+  reference: references/post-converge.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.mechanisms
+  display_name: 机制沉淀
+  collection: post
+  status: available
+  input: 模块、测量与干预
+  output: 功能标签、证据类型和机制关联
+  entrypoint: rondel-main
+  reference: references/post-mechanisms.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.claims
+  display_name: 论点与局限
+  collection: post
+  status: available
+  input: 发现、对照和适用条件
+  output: 性能、机制、归因与局限清单
+  entrypoint: rondel-main
+  reference: references/post-claims.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.visualize
+  display_name: 视觉与图表
+  collection: post
+  status: available
+  input: 项目视觉规范及真实数据
+  output: 图表、统计和来源清单
+  entrypoint: rondel-main
+  reference: references/post-visualize.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.write
+  display_name: 论文表达
+  collection: post
+  status: available
+  input: 中心问题、证据和投稿格式
+  output: 故事线、章节、引用与修订
+  entrypoint: rondel-main
+  reference: references/post-write.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.submission
+  display_name: 投稿准备
+  collection: post
+  status: available
+  input: 目标投稿及官方要求
+  output: 日期时区、内部排期和材料清单
+  entrypoint: rondel-main
+  reference: references/post-submission.md
+  context: project-summary-and-selected-evidence
+  state_updates: only relevant records; human decisions separately sourced
+- id: post.closeout
+  display_name: 研究收尾与成果交付
+  collection: post
+  status: available
+  input: 当前成果、实际版本、有效证据、未完项与用户收尾范围
+  output: 复现包、资料包、验证范围、研究回顾与告别
+  entrypoint: rondel-main
+  reference: references/post-closeout.md
+  context: project-summary-and-selected-evidence
+  state_updates: delivery does not archive; actual archive choice separately sourced

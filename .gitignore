@@ -1,0 +1,13 @@
+.venv/
+.uv-cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+.private/
+.rondal/
+.env
+.env.*
+dist/
+.coverage
+.test-tmp/

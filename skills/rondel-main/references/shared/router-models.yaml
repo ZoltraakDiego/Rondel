@@ -1,0 +1,15 @@
+schema_version: 1
+codex:
+  model: gpt-6-luna
+  reasoning_effort: low
+  fork_turns: none
+claude:
+  model: sonnet
+  omit_claude_md: true
+  max_turns: 1
+limits:
+  max_request_chars: 2400
+  max_hint_chars: 600
+  max_seed_chars: 4000
+  max_result_chars: 1200
+  max_calls_per_intent: 1
