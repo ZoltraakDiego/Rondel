@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/diego20050818/Rondel/releases"><img src="https://img.shields.io/badge/version-0.1.1-214E46?style=flat-square&amp;labelColor=243C35" alt="Version 0.1.1"></a>
+  <a href="https://github.com/ZoltraakDiego/Rondel/releases"><img src="https://img.shields.io/badge/version-0.1.1-214E46?style=flat-square&amp;labelColor=243C35" alt="Version 0.1.1"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-C38B42?style=flat-square&amp;labelColor=243C35" alt="MIT license"></a>
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.11%2B-748878?style=flat-square&amp;labelColor=243C35" alt="Python 3.11 or newer for local helpers"></a>
 </p>
@@ -16,7 +16,7 @@
   <a href="#从一个问题开始">开始使用</a> &nbsp; / &nbsp;
   <a href="examples/guided-init/README.md">相识示例</a> &nbsp; / &nbsp;
   <a href="docs/architecture.md">架构与流程</a> &nbsp; / &nbsp;
-  <a href="https://github.com/diego20050818/Rondel/releases/latest">下载技能包</a>
+  <a href="https://github.com/ZoltraakDiego/Rondel/releases/latest">下载技能包</a>
 </p>
 
 <br>
@@ -29,7 +29,7 @@ Rondel 是一个面向研究者的科研协作 Skill，陪你从模糊的想法�
 
 ## 从一个问题开始
 
-从 [Releases](https://github.com/diego20050818/Rondel/releases/latest) 下载 `rondel-main-0.1.1.zip`，解压后保留完整的 `rondel-main` 文件夹。按使用的 Agent，将它放入下表中的项目技能目录，再确认客户端已经发现技能。辅助脚本需要有效的 Python 3.11+ 解释器，安装包已内置 PyYAML，具体接入方式见对应说明。
+从 [Releases](https://github.com/ZoltraakDiego/Rondel/releases/latest) 下载 `rondel-main-0.1.1.zip`，解压后保留完整的 `rondel-main` 文件夹。按使用的 Agent，将它放入下表中的项目技能目录，再确认客户端已经发现技能。辅助脚本需要有效的 Python 3.11+ 解释器，安装包已内置 PyYAML，具体接入方式见对应说明。
 
 | 使用环境 | 项目内安装位置 | 启动方式与说明 |
 | :--- | :--- | :--- |

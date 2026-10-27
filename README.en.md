@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="README.md">中文</a> · <b>English</b><br>
-  <a href="https://github.com/diego20050818/Rondel/releases/latest">Download the skill</a> &nbsp; / &nbsp;
+  <a href="https://github.com/ZoltraakDiego/Rondel/releases/latest">Download the skill</a> &nbsp; / &nbsp;
   <a href="docs/architecture.md">Architecture</a> &nbsp; / &nbsp;
   <a href="examples/guided-init/README.md">A first conversation</a>
 </p>
@@ -20,7 +20,7 @@ The name evokes a returning poetic form: revisit the first question with new evi
 
 ## Get started
 
-Download `rondel-main-0.1.1.zip` from [Releases](https://github.com/diego20050818/Rondel/releases/latest), extract it and keep the complete `rondel-main` directory. Install it into the project skill location below and confirm that your client discovers it. Local helpers require a working Python 3.11+ interpreter; the package includes PyYAML.
+Download `rondel-main-0.1.1.zip` from [Releases](https://github.com/ZoltraakDiego/Rondel/releases/latest), extract it and keep the complete `rondel-main` directory. Install it into the project skill location below and confirm that your client discovers it. Local helpers require a working Python 3.11+ interpreter; the package includes PyYAML.
 
 | Client | Project skill location | Invocation and guide |
 | :--- | :--- | :--- |
